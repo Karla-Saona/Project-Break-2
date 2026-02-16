@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 // arxius estáticos(css + img)
 app.use(express.static("public"));
 
-// Session (antes de rutas)
+// Sesion (antes de rutas)
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "super-secret",

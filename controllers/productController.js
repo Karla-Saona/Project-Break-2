@@ -44,14 +44,26 @@ const showProductById = async (req, res) => {
   }
 };
 
-// CREATE. Crear un producto. Redirect por formulario
+// CREATE. Crear un producto
 const createProduct = async (req, res) => {
   try {
     const product = await Product.create(req.body);
 
-    res.redirect("/products");
+    // Si viene de Postman/tests (JSON), devolvemos JSON
+    const wantsJson =
+      req.headers["content-type"]?.includes("application/json") ||
+      req.headers["accept"]?.includes("application/json");
+
+    if (wantsJson) {
+      return res.status(201).json(product);
+    }
+
+    // Si viene de formulario web, redirigimos
+    return res.redirect("/products");
   } catch (error) {
-    res.status(500).send(baseHtml("Error", "<p>Error creating product</p>", req));
+    return res
+      .status(500)
+      .send(baseHtml("Error", "<p>Error creating product</p>", req));
   }
 };
 
