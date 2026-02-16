@@ -28,5 +28,13 @@ Incluye CRUD de productos, páginas HTML generadas desde backend y autenticació
 
 ```bash
 npm install
-npm start / npm run dev
+npm start 
+npm run dev
 npm test
+
+
+## Deploy. App desplegada en Render:
+https://project-break-2-zubo.onrender.com/
+
+##Repositorio. Código en Github:
+https://github.com/Karla-Saona/Project-Break-2
